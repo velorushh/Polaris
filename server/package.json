@@ -1,0 +1,22 @@
+﻿{
+    "name":  "server",
+    "version":  "1.0.0",
+    "main":  "index.js",
+    "scripts":  {
+                    "seed":  "node seed.js",
+                    "dev":  "node index.js",
+                    "start":  "node index.js"
+                },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "description":  "",
+    "dependencies":  {
+                         "cors":  "^2.8.6",
+                         "dotenv":  "^18.0.4",
+                         "express":  "^5.2.1",
+                         "sql.js":  "^1.14.2"
+                     }
+}

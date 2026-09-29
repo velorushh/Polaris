@@ -1,0 +1,225 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===================================================
+   GOI (Government of India) Theme
+   Color Reference: india.gov.in, nic.in, MoES portal
+   =================================================== */
+
+:root {
+  --goi-navy:       #003580;   /* Primary navy blue */
+  --goi-navy-dark:  #002060;   /* Darker navy */
+  --goi-navy-light: #1a4d9c;   /* Lighter navy for hover */
+  --goi-saffron:    #f47920;   /* Saffron/orange accent */
+  --goi-saffron-dk: #d4600a;   /* Darker saffron */
+  --goi-green:      #138808;   /* India flag green */
+  --goi-white:      #ffffff;
+  --goi-bg:         #f0f4f8;   /* Page background - light blue-grey */
+  --goi-card-bg:    #ffffff;
+  --goi-border:     #c8d4e8;   /* Border colour */
+  --goi-text:       #1a2744;   /* Primary text - dark navy */
+  --goi-text-muted: #5a6a8a;   /* Muted text */
+  --goi-text-light: #8595af;   /* Light text */
+  --goi-success:    #0a7a3e;
+  --goi-warning:    #b86000;
+  --goi-danger:     #b91c1c;
+  --goi-info:       #1e56a0;
+  --goi-stripe:     #f5f7fb;   /* Table alternate row */
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--goi-bg);
+    color: var(--goi-text);
+    font-family: 'Inter', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 13px;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #eef2f7; }
+  ::-webkit-scrollbar-thumb { background: #b0bed4; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #8595af; }
+}
+
+@layer components {
+
+  /* === CARDS === */
+  .card {
+    @apply bg-white border border-[#c8d4e8] rounded shadow-sm;
+  }
+
+  .card-header {
+    @apply flex items-center justify-between px-4 py-2.5 border-b border-[#c8d4e8] bg-[#f5f7fb];
+  }
+
+  .card-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--goi-navy);
+  }
+
+  /* === NAVIGATION LINKS === */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded text-[13px] font-medium
+           text-[#3a5080] hover:text-[#003580] hover:bg-[#e8eef8]
+           transition-all duration-150 cursor-pointer select-none;
+  }
+
+  .nav-link.active {
+    @apply text-[#003580] bg-[#dbe6f8] font-semibold;
+    border-left: 3px solid var(--goi-saffron);
+  }
+
+  .nav-link.danger {
+    @apply text-[#b91c1c] hover:text-[#991b1b] hover:bg-red-50;
+  }
+
+  /* === BUTTONS === */
+  .btn-primary {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-semibold
+           text-white transition-colors duration-150;
+    background-color: var(--goi-navy);
+  }
+  .btn-primary:hover { background-color: var(--goi-navy-light); }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-semibold
+           text-white transition-colors duration-150;
+    background-color: var(--goi-saffron);
+  }
+  .btn-secondary:hover { background-color: var(--goi-saffron-dk); }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-semibold
+           border transition-colors duration-150;
+    border-color: var(--goi-navy);
+    color: var(--goi-navy);
+    background: white;
+  }
+  .btn-outline:hover { background-color: #e8eef8; }
+
+  .btn-ghost {
+    @apply p-1.5 rounded text-[#5a6a8a] hover:text-[#003580] hover:bg-[#e8eef8] transition-colors duration-150;
+  }
+
+  /* === BADGES / PILLS === */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide;
+  }
+
+  .badge-success  { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .badge-warning  { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+  .badge-danger   { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  .badge-info     { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+  .badge-neutral  { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+  .badge-saffron  { background: #fff7ed; color: #9a3412; border: 1px solid #fed7aa; }
+
+  /* === LABELS === */
+  .data-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--goi-text-muted);
+  }
+
+  .data-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--goi-text);
+  }
+
+  /* === STATUS DOT === */
+  .status-dot {
+    @apply inline-block w-2 h-2 rounded-full;
+  }
+
+  /* === SKELETON === */
+  .skeleton { @apply bg-[#e2e8f0] rounded animate-pulse; }
+
+  /* === TABLES === */
+  .goi-table { @apply w-full text-xs border-collapse; }
+  .goi-table thead tr { background-color: var(--goi-navy); }
+  .goi-table thead th {
+    @apply px-3 py-2.5 text-left text-[10px] font-bold uppercase tracking-wider;
+    color: white;
+    letter-spacing: 0.06em;
+  }
+  .goi-table tbody tr { border-bottom: 1px solid #e2e8f0; }
+  .goi-table tbody tr:nth-child(even) { background-color: var(--goi-stripe); }
+  .goi-table tbody tr:hover { background-color: #eef2f8; }
+  .goi-table tbody td { @apply px-3 py-2.5 text-[#1a2744]; }
+
+  /* === SECTION HEADER (inside pages) === */
+  .section-header {
+    @apply flex items-center justify-between px-4 py-2 border-b border-[#c8d4e8];
+    background: linear-gradient(to right, #f5f7fb, #eef2f8);
+  }
+
+  .breadcrumb {
+    @apply flex items-center gap-1.5 text-[11px];
+    color: var(--goi-text-muted);
+  }
+
+  .breadcrumb-sep { color: var(--goi-text-light); }
+
+  /* === PROGRESS BARS === */
+  .progress-track {
+    @apply h-2 rounded-full overflow-hidden;
+    background: #e2e8f0;
+  }
+  .progress-fill-navy   { @apply h-full rounded-full; background: var(--goi-navy); }
+  .progress-fill-saffron{ @apply h-full rounded-full; background: var(--goi-saffron); }
+  .progress-fill-green  { @apply h-full rounded-full; background: var(--goi-green); }
+  .progress-fill-danger { @apply h-full rounded-full; background: var(--goi-danger); }
+}
+
+@layer utilities {
+  .text-navy   { color: var(--goi-navy); }
+  .text-saffron{ color: var(--goi-saffron); }
+  .bg-navy     { background-color: var(--goi-navy); }
+  .bg-saffron  { background-color: var(--goi-saffron); }
+  .border-navy { border-color: var(--goi-navy); }
+  .text-mono   { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+  .goi-shadow  { box-shadow: 0 1px 4px rgba(0,53,128,0.10), 0 0 0 1px rgba(0,53,128,0.06); }
+  .goi-shadow-md { box-shadow: 0 2px 8px rgba(0,53,128,0.12); }
+}
+
+/* === SHIMMER SKELETON === */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* === ACTIVE PULSE (for live indicators) === */
+@keyframes goi-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+.live-dot { animation: goi-pulse 1.8s ease-in-out infinite; }
+
+/* === SAFFRON TOP STRIPE (GOI accent) === */
+.saffron-stripe {
+  height: 4px;
+  background: linear-gradient(to right, #f47920 0%, #f4c430 50%, #138808 100%);
+}
